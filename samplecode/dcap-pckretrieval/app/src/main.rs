@@ -155,7 +155,9 @@ fn main() {
 fn generate_quote() -> Option<Vec<u8>> {
     let mut ti: sgx_target_info_t = sgx_target_info_t::default();
 
-    let _l = libloading::Library::new("./libdcap_quoteprov.so.1").unwrap();
+    let _l1 = libloading::Library::new("./libdcap_quoteprov.so.1").unwrap();
+    let _l2 = libloading::Library::new("/usr/lib/x86_64-linux-gnu/libsgx_pce.signed.so").unwrap();
+    let _l3 = libloading::Library::new("/usr/lib/x86_64-linux-gnu/libsgx_qe3.signed.so").unwrap();
     println!("Step1: Call sgx_qe_get_target_info:");
     //println!("sgx_qe_get_target_info = {:p}", sgx_qe_get_target_info as * const _);
 
